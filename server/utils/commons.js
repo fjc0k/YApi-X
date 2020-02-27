@@ -8,7 +8,6 @@ const interfaceColModel = require('../models/interfaceCol.js');
 const interfaceCaseModel = require('../models/interfaceCase.js');
 const interfaceModel = require('../models/interface.js');
 const userModel = require('../models/user.js');
-const followModel = require('../models/follow.js');
 const json5 = require('json5');
 const _ = require('underscore');
 const Ajv = require('ajv');
@@ -260,15 +259,10 @@ exports.handleVarPath = (pathname, params) => {
 
 /**
  * 验证一个 path 是否合法
- * path第一位必需为 /, path 只允许由 字母数字-/_:.{}= 组成
  */
 exports.verifyPath = path => {
-  // if (/^\/[a-zA-Z0-9\-\/_:!\.\{\}\=]*$/.test(path)) {
-  //   return true;
-  // } else {
-  //   return false;
-  // }
-  return /^\/[a-zA-Z0-9\-\/_:!\.\{\}\=]*$/.test(path);
+  // ref: https://urlregex.com/ -> HTML5
+  return /^\/([^?#]*)(\?([^#]*))?(#(.*))?/.test(path);
 };
 
 /**
