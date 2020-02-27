@@ -1,4 +1,11 @@
 更新日志
+## [2.1.0](https://github.com/fjc0k/yapi-x/compare/v2.0.0...v2.1.0) (2020-02-27)
+
+
+### 特性
+
+* 支持复制分类 ([3ca2385](https://github.com/fjc0k/yapi-x/commit/3ca2385f861a210811cf7cbc53a9670583d1ff12))
+
 ## 2.0.0 (2020-02-27)
 
 
