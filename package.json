@@ -21,7 +21,9 @@
     "root": true,
     "extends": "io",
     "rules": {
-      "new-cap": 0
+      "new-cap": 0,
+      "eqeqeq": 0,
+      "react/jsx-filename-extension": 0
     }
   },
   "eslintIgnore": [
