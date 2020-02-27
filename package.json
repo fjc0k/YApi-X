@@ -1,15 +1,16 @@
 {
-  "name": "yapi-vendor",
+  "name": "yapi-x",
   "version": "1.8.8",
-  "description": "YAPI",
+  "description": "YApi 改。",
   "main": "server/app.js",
   "scripts": {
+    "dev": "npm run dev-server & npm run dev-client",
+    "start": "node server/app.js",
+    "release": "standard-version -a && git push --follow-tags origin master",
     "dev-copy-icon": "cp -r static/iconfont ./",
     "dev-server": " nodemon server/app.js dev -L",
     "install-server": " node server/install.js",
     "dev-client": "npm run dev-copy-icon && ykit s -p 4000",
-    "dev": "npm run dev-server & npm run dev-client",
-    "start": " node server/app.js",
     "test": "ava",
     "build-client": "NODE_ENV=production ykit pack -m",
     "npm-publish": "node ./npm-publish.js",
@@ -25,10 +26,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:YMFE/yapi.git"
+    "url": "git@github.com:fjc0k/yapi-x.git"
   },
-  "author": "",
-  "license": "Apache-2.0",
+  "author": {
+    "name": "Jay Fong",
+    "email": "fjc0kb@gmail.com",
+    "url": "https://github.com/fjc0k"
+  },
+  "license": "MIT",
   "dependencies": {
     "ajv": "^5.5.1",
     "ajv-i18n": "^2.2.0",
@@ -114,7 +119,6 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-react": "^7.1.0",
     "extract-text-webpack-plugin": "2.0.0",
-    "ghooks": "^2.0.0",
     "happypack": "^4.0.0-beta.5",
     "json-schema-editor-visual": "^1.0.23",
     "less": "^2.7.2",
@@ -143,10 +147,10 @@
     "redux-promise": "^0.5.3",
     "rewire": "^2.5.2",
     "sass-loader": "^7.0.3",
+    "standard-version": "^7.1.0",
     "string-replace-webpack-plugin": "^0.1.3",
     "style-loader": "^0.18.2",
     "table-resolver": "^3.2.0",
-    "validate-commit-msg": "^2.12.2",
     "webpack": "^2.2.0",
     "webpack-dev-middleware": "^1.12.0",
     "webpack-node-externals": "^1.6.0",
@@ -154,27 +158,6 @@
     "ykit": "0.6.2",
     "ykit-config-antd": "0.1.3",
     "ykit-config-es6": "^1.1.0"
-  },
-  "config": {
-    "ghooks": {
-      "commit-msg": "validate-commit-msg"
-    },
-    "validate-commit-msg": {
-      "types": [
-        "feat",
-        "fix",
-        "docs",
-        "test",
-        "chore",
-        "refactor",
-        "opti"
-      ],
-      "warnOnFail": false,
-      "maxSubjectLength": 100,
-      "subjectPattern": ".+",
-      "subjectPatternErrorMsg": "请输入message信息!",
-      "helpMessage": "Commit message 格式错误， http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html"
-    }
   },
   "engines": {
     "node": ">= 7.6.0",
