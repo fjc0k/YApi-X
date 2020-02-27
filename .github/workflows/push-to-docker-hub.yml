@@ -1,14 +1,19 @@
 name: Push to Docker Hub
 
-on: push
+on:
+  push:
+    tags:
+      - 'v*.*.*'
 
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: login & build & push
+    - name: push
       run: |
+        VERSION=${GITHUB_REF:11}
         docker login -u jayfong -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-        docker build -f docker/Dockerfile -t jayfong/yapi-x:latest .
+        docker build -f docker/Dockerfile -t jayfong/yapi-x:latest -t jayfong/yapi-x:${VERSION} .
         docker push jayfong/yapi-x:latest
+        docker push jayfong/yapi-x:${VERSION}
