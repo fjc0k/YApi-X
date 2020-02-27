@@ -1,0 +1,62 @@
+.ant-tabs-bar {
+  border-bottom: 1px solid transparent;
+  margin-bottom: 0;
+}
+
+
+.m-panel{
+  background-color: #fff;
+  padding: 24px;
+  min-height: 4.68rem;
+  margin-top: 0;
+}
+
+.project-list{
+  .project-list-header{
+    background: #eee;
+    height: 64px;
+    line-height: 40px;
+    border-radius: 4px;
+    text-align: right;
+    padding: 0 10px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    color: rgba(39, 56, 72, 0.85);
+    font-weight: 500;
+  }
+  .owner-type{
+    // padding: 10px;
+    font-size: 15px;
+    // background-color: #eee;
+    // border-radius: 4px;
+    // margin-bottom: 15px;
+    font-weight: 400;
+    margin-bottom: 0.16rem;
+    border-left: 3px solid #2395f1;
+    padding-left: 8px;
+  }
+}
+
+
+
+.ant-input-group-wrapper {
+  width: 100%;
+}
+
+.dynamic-delete-button {
+  cursor: pointer;
+  position: relative;
+  top: 4px;
+  font-size: 24px;
+  color: #999;
+  transition: all .3s;
+}
+.dynamic-delete-button:hover {
+  color: #777;
+}
+.dynamic-delete-button[disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}

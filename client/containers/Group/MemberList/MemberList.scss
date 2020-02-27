@@ -1,0 +1,58 @@
+@import '../../../styles/mixin.scss';
+
+.m-panel{
+  background-color: #fff;
+  padding: 24px;
+  min-height: 4.68rem;
+  margin-top: 0;
+  // box-shadow: $box-shadow-panel;
+}
+
+.m-tab {
+  overflow: inherit !important;
+}
+
+.btn-container {
+  text-align: right;
+}
+
+.modal-input {
+  display: flex;
+  align-items: center;
+  margin-bottom: .24rem;
+  .label {
+    text-align: right;
+  }
+  .select {
+    width: 1.2rem;
+  }
+}
+
+.member-opration {
+  text-align: right;
+  .select {
+    width: 1.2rem;
+  }
+  .btn-danger {
+    margin-left: .08rem;
+    // background-color: transparent;
+    border-color: transparent;
+  }
+}
+
+.m-user {
+  display: flex;
+  align-items: center;
+  .m-user-img {
+    width: .32rem;
+    height: .32rem;
+    border-radius: .04rem;
+  }
+  .m-user-name {
+    margin-left: 8px;
+  }
+  
+}
+.usernamelabel,.usernameauth{
+  line-height: 36px;
+}

@@ -1,0 +1,116 @@
+@import '../../../../styles/mixin.scss';
+
+.interface-edit{
+  padding: 24px;
+  // overflow: hidden;
+  .interface-edit-item{
+    margin-bottom: 16px;
+    .ant-form-item-label label:after{
+      margin-left: 4px;
+    }
+
+    .interface-editor {
+      min-height: 300px;
+    }
+  }
+
+  .interface-edit-json-info{
+    margin-bottom: 5px;
+  }
+
+  .interface-edit-item.hide {
+    display: none;
+  }
+  .interface-edit-item-content{
+    margin-bottom: 16px;
+    .interface-edit-item-content-col{
+      padding:0 1px;
+    }
+    .interface-edit-item-content-col-drag{
+      width:24px;
+      padding: 7px;
+      cursor: ns-resize;
+    }
+  }
+  .interface-edit-del-icon{
+    margin-top: 10px;
+    margin-left: 5px;
+    cursor: pointer
+  }
+  .interface-edit-direc-icon{
+    margin-top: 5px;
+    margin-left: 5px;
+    cursor: pointer
+  }
+  .ant-select-selection__rendered{
+    line-height: 34px;
+  }
+  .interace-edit-desc{
+    height: 250px;
+  }
+  .ant-affix{
+    background-color: #f3f4f6;
+     padding: 16px 0;
+     z-index: 999;
+  }
+  .interface-edit-submit-button{
+      background-color: #1d1d3d;
+      color: #fff;
+  }
+
+  .interface-edit-submit-button:hover{
+    border-color: #434370;
+    background-color: #434370;
+  }
+}
+
+.table-interfacelist {
+  margin-top: .2rem;
+  white-space: nowrap;
+  table {
+    table-layout: fixed;
+  }
+  .path {
+    width: 95%;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    padding-right: 24px;
+    // line-height: 100%;
+    vertical-align: middle;
+  }
+
+  .opened {
+    color: #00a854;
+    padding-right: 6px;
+    font-size: 14px;
+  }
+  .colValue{
+    display: inline-block;
+    border-radius: 4px;
+    color: #00a854;
+    background: #cfefdf;
+    border-color: #cfefdf;
+    height: 23px;
+    line-height: 23px;
+    text-align: center;
+    font-size: 10px;
+    margin-right: 7px;
+    padding: 0 5px;
+  }
+  .ant-select-selection {
+    background-color: transparent;
+    border: none;
+  }
+}
+
+.toolTip .ant-tooltip-inner{
+  white-space: normal;
+  word-break: break-all;
+}
+
+.tag-modal-center {
+  padding-left: 48px;
+}
+

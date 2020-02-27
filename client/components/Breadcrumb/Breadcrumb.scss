@@ -1,0 +1,26 @@
+@import '../../styles/mixin.scss';
+
+.breadcrumb-container {
+  .ant-breadcrumb {
+    font-size: 16px;
+    float: left;
+    color: #fff;
+    padding-left: 16px;
+    line-height: unset;
+  
+  }
+  .ant-breadcrumb a {
+    color: #fff;
+    &:hover {
+      color: $color-blue
+    }
+  }
+  .ant-breadcrumb > span:last-child {
+    color: #fff;
+    font-weight: normal;
+  }
+  .ant-breadcrumb-separator {
+    color: #fff;
+    font-weight: normal;
+  }
+}
