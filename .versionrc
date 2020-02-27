@@ -1,0 +1,12 @@
+{
+  "header": "更新日志",
+  "types": [
+    {"type": "feat", "section": "特性"},
+    {"type": "fix", "section": "修复"},
+    {"type": "docs", "section": "文档"},
+    {"type": "refactor", "section": "重构"},
+    {"type": "perf", "section": "性能"},
+    {"type": "chore", "hidden": true},
+    {"type": "test", "hidden": true}
+  ]
+}

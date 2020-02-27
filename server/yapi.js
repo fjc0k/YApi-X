@@ -1,21 +1,21 @@
-const path = require('path');
-const fs = require('fs-extra');
-const nodemailer = require('nodemailer');
-const config = require('../../config.json');
+const path = require('path')
+const fs = require('fs-extra')
+const nodemailer = require('nodemailer')
+const config = require('../../config.json')
 
-let insts = new Map();
-let mail;
+const insts = new Map()
+let mail
 
-const WEBROOT = path.resolve(__dirname, '..'); //路径
-const WEBROOT_SERVER = __dirname;
-const WEBROOT_RUNTIME = path.resolve(__dirname, '../..');
-const WEBROOT_LOG = path.join(WEBROOT_RUNTIME, 'log');
-const WEBCONFIG = config;
+const WEBROOT = path.resolve(__dirname, '..') //路径
+const WEBROOT_SERVER = __dirname
+const WEBROOT_RUNTIME = path.resolve(__dirname, '../..')
+const WEBROOT_LOG = path.join(WEBROOT_RUNTIME, 'log')
+const WEBCONFIG = config
 
-fs.ensureDirSync(WEBROOT_LOG);
+fs.ensureDirSync(WEBROOT_LOG)
 
 if (WEBCONFIG.mail && WEBCONFIG.mail.enable) {
-  mail = nodemailer.createTransport(WEBCONFIG.mail);
+  mail = nodemailer.createTransport(WEBCONFIG.mail)
 }
 
 /**
@@ -26,21 +26,20 @@ if (WEBCONFIG.mail && WEBCONFIG.mail.enable) {
  */
 function getInst(m, ...args) {
   if (!insts.get(m)) {
-    insts.set(m, new m(args));
+    insts.set(m, new m(args))
   }
-  return insts.get(m);
+  return insts.get(m)
 }
 
 function delInst(m) {
   try {
-    insts.delete(m);
+    insts.delete(m)
   } catch (err) {
     console.error(err); // eslint-disable-line
   }
 }
 
-
-let r = {
+const r = {
   fs: fs,
   path: path,
   WEBROOT: WEBROOT,
@@ -50,7 +49,7 @@ let r = {
   WEBCONFIG: WEBCONFIG,
   getInst: getInst,
   delInst: delInst,
-  getInsts: insts
-};
-if (mail) r.mail = mail;
-module.exports = r;
+  getInsts: insts,
+}
+if (mail) r.mail = mail
+module.exports = r
