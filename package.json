@@ -8,21 +8,13 @@
     "start": "node server/app.js",
     "release": "standard-version -a && git push --follow-tags origin master",
     "dev-copy-icon": "cp -r static/iconfont ./",
-    "dev-server": " nodemon server/app.js dev -L",
-    "install-server": " node server/install.js",
+    "dev-server": "nodemon server/app.js dev -L",
+    "install-server": "node server/install.js",
     "dev-client": "npm run dev-copy-icon && ykit s -p 4000",
     "test": "ava",
     "build-client": "NODE_ENV=production ykit pack -m",
     "npm-publish": "node ./npm-publish.js",
     "docs": "ydoc build"
-  },
-  "scripts-info": {
-    "start": "运行生产环境服务器",
-    "install-server": "初始化数据库数据，用于安装",
-    "dev": "运行开发服务器",
-    "dev-server": "运行后端开发服务器",
-    "dev-client": "运行前端开发服务器",
-    "test": "执行测试"
   },
   "repository": {
     "type": "git",
