@@ -10,7 +10,7 @@ COPY . .
 RUN echo '{"adminAccount":"admin@docker.yapi","db":{"servername":"yapi-mongo","port":27017,"DATABASE":"yapi"},"mail":{"enable":false},"ldapLogin":{"enable":false},"closeRegister":true,"plugins":[]}' > /yapi/config.json
 RUN npm ci
 RUN npm run build-client \
-  && yarn tsc docker/start.ts
+  && yarn tsc --module commonjs --outDir .. --esModuleInterop ./docker/start.ts
 RUN cd .. \
   && yarn add deepmerge \
   && shopt -s globstar \
@@ -25,4 +25,4 @@ COPY --from=builder /yapi .
 
 EXPOSE 3000
 
-CMD ["node", "./docker/start.js"]
+CMD ["node", "./start.js"]

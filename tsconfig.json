@@ -12,6 +12,5 @@
     "skipLibCheck": true,
     "newLine": "LF",
     "sourceMap": false
-  },
-  "include": ["docker"]
+  }
 }
