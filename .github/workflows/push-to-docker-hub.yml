@@ -1,0 +1,14 @@
+name: Push to Docker Hub
+
+on: push
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: login & build & push
+      run: |
+        docker login -u jayfong -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+        docker build -f docker/Dockerfile -t jayfong/yapi-x:latest .
+        docker push jayfong/yapi-x:latest
