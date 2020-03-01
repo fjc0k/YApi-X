@@ -5,7 +5,7 @@ import produce from 'immer'
 import PropTypes from 'prop-types'
 import React, {PureComponent as Component} from 'react'
 import {arrayChangeIndex} from '../../../../common.js'
-import {Button, Icon, Input, message, Modal, Tooltip, Tree} from 'antd'
+import {Button, Icon, Input, message, Modal, Spin, Tooltip, Tree} from 'antd'
 import {connect} from 'react-redux'
 import {
   deleteInterfaceCatData,
@@ -77,6 +77,7 @@ class InterfaceMenu extends Component {
       curCatdata: {},
       expands: null,
       list: [],
+      catLoading: false,
     }
   }
 
@@ -190,12 +191,14 @@ class InterfaceMenu extends Component {
    * @param cat {{name: string, desc: string, project_id: number, list: any[]}} 分类
    */
   copyCategory = async cat => {
+    this.setState({catLoading: true})
     const res = await axios.post('/api/interface/add_cat', {
       name: `${cat.name}_copy`,
       desc: cat.desc,
       project_id: cat.project_id,
     })
     if (res.data.errcode !== 0) {
+      this.setState({catLoading: false})
       return message.error(res.data.errmsg)
     }
     const newCatId = res.data.data._id
@@ -208,11 +211,17 @@ class InterfaceMenu extends Component {
         path: `${item.path}_${Date.now()}${index}`,
       })
     }))
-    message.success('分类复制成功')
     await this.getList()
     this.props.history.push(`/project/${this.props.projectId}/interface/api/cat_${newCatId}`)
+    message.success('分类复制成功')
     this.setState({
+      catLoading: false,
       expands: [`cat_${newCatId}`],
+    }, () => {
+      document.querySelector(`.yapi-cat-${newCatId}`).scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+      })
     })
   }
 
@@ -546,118 +555,120 @@ class InterfaceMenu extends Component {
       <div>
         {searchBox}
         {menuList.length > 0 ? (
-          <div
-            className='tree-wrappper'
-            style={{maxHeight: `${parseInt(document.body.clientHeight) - headHeight }px`}}>
-            <Tree
-              className='interface-list'
-              defaultExpandedKeys={currentKes.expands}
-              defaultSelectedKeys={currentKes.selects}
-              expandedKeys={currentKes.expands}
-              selectedKeys={currentKes.selects}
-              draggable={true}
-              onSelect={this.handleSelect}
-              onExpand={this.handleExpand}
-              onDrop={this.handleDrop}>
-              <TreeNode
-                key='root'
-                className='item-all-interface'
-                title={(
-                  <Link
-                    to={`/project/${ matchParams.id }/interface/api`}
-                    onClick={e => {
-                      e.stopPropagation()
-                      this.changeExpands()
-                    }}>
-                    <Icon type='folder' style={{marginRight: 5}} />
-                    全部接口
-                  </Link>
-                )}
-              />
-              {menuList.map(item => {
-                return (
-                  <TreeNode
-                    key={`cat_${ item._id}`}
-                    title={(
-                      <div
-                        className='container-title'
-                        onMouseEnter={() => this.enterItem(item._id)}
-                        onMouseLeave={this.handleLeaveItem}>
-                        <Link
-                          className='interface-item'
-                          to={`/project/${ matchParams.id }/interface/api/cat_${ item._id}`}
-                          onClick={e => {
-                            e.stopPropagation()
-                            this.changeExpands()
-                          }}>
-                          <Icon type='folder-open' style={{marginRight: 5}} />
-                          {item.name}
-                        </Link>
-                        <div className='btns'>
-                          <Tooltip title='删除分类'>
-                            <Icon
-                              type='delete'
-                              className='interface-delete-icon'
-                              style={{display: this.state.delIcon == item._id ? 'block' : 'none'}}
-                              onClick={e => {
-                                e.stopPropagation()
-                                this.showDelCatConfirm(item._id)
-                              }}
-                            />
-                          </Tooltip>
-                          <Tooltip title='复制分类'>
-                            <Icon
-                              type='copy'
-                              className='interface-delete-icon'
-                              style={{display: this.state.delIcon == item._id ? 'block' : 'none'}}
-                              onClick={e => {
-                                e.stopPropagation()
-                                this.copyCategory(item)
-                              }}
-                            />
-                          </Tooltip>
-                          <Tooltip title='修改分类'>
-                            <Icon
-                              type='edit'
-                              className='interface-delete-icon'
-                              style={{display: this.state.delIcon == item._id ? 'block' : 'none'}}
-                              onClick={e => {
-                                e.stopPropagation()
-                                this.changeModal('change_cat_modal_visible', true)
-                                this.setState({
-                                  curCatdata: item,
-                                })
-                              }}
-                            />
-                          </Tooltip>
-                          <Tooltip title='添加接口'>
-                            <Icon
-                              type='plus'
-                              className='interface-delete-icon'
-                              style={{display: this.state.delIcon == item._id ? 'block' : 'none'}}
-                              onClick={e => {
-                                e.stopPropagation()
-                                this.changeModal('visible', true)
-                                this.setState({
-                                  curCatid: item._id,
-                                })
-                              }}
-                            />
-                          </Tooltip>
-                        </div>
+          <Spin spinning={this.state.catLoading}>
+            <div
+              className='tree-wrappper'
+              style={{maxHeight: `${parseInt(document.body.clientHeight) - headHeight }px`}}>
+              <Tree
+                className='interface-list'
+                defaultExpandedKeys={currentKes.expands}
+                defaultSelectedKeys={currentKes.selects}
+                expandedKeys={currentKes.expands}
+                selectedKeys={currentKes.selects}
+                draggable={true}
+                onSelect={this.handleSelect}
+                onExpand={this.handleExpand}
+                onDrop={this.handleDrop}>
+                <TreeNode
+                  key='root'
+                  className='item-all-interface'
+                  title={(
+                    <Link
+                      to={`/project/${ matchParams.id }/interface/api`}
+                      onClick={e => {
+                        e.stopPropagation()
+                        this.changeExpands()
+                      }}>
+                      <Icon type='folder' style={{marginRight: 5}} />
+                      全部接口
+                    </Link>
+                  )}
+                />
+                {menuList.map(item => {
+                  return (
+                    <TreeNode
+                      key={`cat_${item._id}`}
+                      title={(
+                        <div
+                          className='container-title'
+                          onMouseEnter={() => this.enterItem(item._id)}
+                          onMouseLeave={this.handleLeaveItem}>
+                          <Link
+                            className='interface-item'
+                            to={`/project/${ matchParams.id }/interface/api/cat_${ item._id}`}
+                            onClick={e => {
+                              e.stopPropagation()
+                              this.changeExpands()
+                            }}>
+                            <Icon type='folder-open' style={{marginRight: 5}} />
+                            {item.name}
+                          </Link>
+                          <div className='btns'>
+                            <Tooltip title='删除分类'>
+                              <Icon
+                                type='delete'
+                                className='interface-delete-icon'
+                                style={{display: this.state.delIcon == item._id ? 'block' : 'none'}}
+                                onClick={e => {
+                                  e.stopPropagation()
+                                  this.showDelCatConfirm(item._id)
+                                }}
+                              />
+                            </Tooltip>
+                            <Tooltip title='复制分类'>
+                              <Icon
+                                type='copy'
+                                className='interface-delete-icon'
+                                style={{display: this.state.delIcon == item._id ? 'block' : 'none'}}
+                                onClick={e => {
+                                  e.stopPropagation()
+                                  this.copyCategory(item)
+                                }}
+                              />
+                            </Tooltip>
+                            <Tooltip title='修改分类'>
+                              <Icon
+                                type='edit'
+                                className='interface-delete-icon'
+                                style={{display: this.state.delIcon == item._id ? 'block' : 'none'}}
+                                onClick={e => {
+                                  e.stopPropagation()
+                                  this.changeModal('change_cat_modal_visible', true)
+                                  this.setState({
+                                    curCatdata: item,
+                                  })
+                                }}
+                              />
+                            </Tooltip>
+                            <Tooltip title='添加接口'>
+                              <Icon
+                                type='plus'
+                                className='interface-delete-icon'
+                                style={{display: this.state.delIcon == item._id ? 'block' : 'none'}}
+                                onClick={e => {
+                                  e.stopPropagation()
+                                  this.changeModal('visible', true)
+                                  this.setState({
+                                    curCatid: item._id,
+                                  })
+                                }}
+                              />
+                            </Tooltip>
+                          </div>
 
-                        {/*<Dropdown overlay={menu(item)} trigger={['click']} onClick={e => e.stopPropagation()}>
+                          {/*<Dropdown overlay={menu(item)} trigger={['click']} onClick={e => e.stopPropagation()}>
                 <Icon type='ellipsis' className="interface-delete-icon" />
               </Dropdown>*/}
-                      </div>
-                    )}
-                    className={`interface-item-nav ${item.list.length ? '' : 'cat_switch_hidden'}`}>
-                    {item.list.map(itemInterfaceCreate)}
-                  </TreeNode>
-                )
-              })}
-            </Tree>
-          </div>
+                        </div>
+                      )}
+                      className={`interface-item-nav ${`yapi-cat-${item._id}`} ${item.list.length ? '' : 'cat_switch_hidden'}`}>
+                      {item.list.map(itemInterfaceCreate)}
+                    </TreeNode>
+                  )
+                })}
+              </Tree>
+            </div>
+          </Spin>
         ) : null}
       </div>
     )
