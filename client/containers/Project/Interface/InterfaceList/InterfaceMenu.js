@@ -199,13 +199,15 @@ class InterfaceMenu extends Component {
       return message.error(res.data.errmsg)
     }
     const newCatId = res.data.data._id
-    await Promise.all(cat.list.map((item, index) => (
-      axios.post('/api/interface/add', {
-        ...item,
+    await Promise.all(cat.list.map(async (item, index) => {
+      const interfaceData = await this.props.fetchInterfaceData(item._id)
+      const data = interfaceData.payload.data.data
+      await axios.post('/api/interface/add', {
+        ...data,
         catid: newCatId,
         path: `${item.path}_${Date.now()}${index}`,
       })
-    )))
+    }))
     message.success('分类复制成功')
     await this.getList()
     this.props.history.push(`/project/${this.props.projectId}/interface/api/cat_${newCatId}`)
