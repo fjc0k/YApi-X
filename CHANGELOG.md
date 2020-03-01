@@ -1,4 +1,17 @@
 更新日志
+## [2.2.0](https://github.com/fjc0k/yapi-x/compare/v2.1.0...v2.2.0) (2020-03-01)
+
+
+### 特性
+
+* **复制分类:** 复制时加载效果、复制完成后自动跳至新分类 ([307e0cd](https://github.com/fjc0k/yapi-x/commit/307e0cdee53ea87faa637173bdc44968076e1558))
+
+
+### 修复
+
+* 支持 Windows 下开发 (close: [#3](https://github.com/fjc0k/yapi-x/issues/3)) ([f4996d4](https://github.com/fjc0k/yapi-x/commit/f4996d4939d45044874cc33129f1dcb07fb8ac3f))
+* **复制分类:** 修复接口复制信息不全 ([25aeaca](https://github.com/fjc0k/yapi-x/commit/25aeacaa6c75cc7e945dc8b81400c4dddc7e20d5))
+
 ## [2.1.0](https://github.com/fjc0k/yapi-x/compare/v2.0.0...v2.1.0) (2020-02-27)
 
 
