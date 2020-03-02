@@ -1,4 +1,11 @@
 更新日志
+### [2.3.2](https://github.com/fjc0k/yapi-x/compare/v2.3.1...v2.3.2) (2020-03-02)
+
+
+### 修复
+
+* 正确处理内置图标和上传图标的关系 ([e9665d8](https://github.com/fjc0k/yapi-x/commit/e9665d8ab19a7c98be51642bf998fd313e7d04cf))
+
 ### [2.3.1](https://github.com/fjc0k/yapi-x/compare/v2.3.0...v2.3.1) (2020-03-02)
 
 
