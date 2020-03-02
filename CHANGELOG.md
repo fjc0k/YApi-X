@@ -1,4 +1,11 @@
 更新日志
+## [2.3.0](https://github.com/fjc0k/yapi-x/compare/v2.2.0...v2.3.0) (2020-03-02)
+
+
+### 特性
+
+* 项目图标支持自传图片 (close: [#9](https://github.com/fjc0k/yapi-x/issues/9)) ([3ae25fe](https://github.com/fjc0k/yapi-x/commit/3ae25fe9dfe0dd9f701723e5e438fb05f65b881e))
+
 ## [2.2.0](https://github.com/fjc0k/yapi-x/compare/v2.1.0...v2.2.0) (2020-03-01)
 
 
