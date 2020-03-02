@@ -1,4 +1,11 @@
 更新日志
+### [2.3.3](https://github.com/fjc0k/yapi-x/compare/v2.3.2...v2.3.3) (2020-03-02)
+
+
+### 修复
+
+* 更改项目图标接口逻辑调整 ([c143474](https://github.com/fjc0k/yapi-x/commit/c143474dbf5d609032d9aad0bf3ebb4706631b3f))
+
 ### [2.3.2](https://github.com/fjc0k/yapi-x/compare/v2.3.1...v2.3.2) (2020-03-02)
 
 
