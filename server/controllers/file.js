@@ -53,8 +53,8 @@ class fileController extends baseController {
     }
 
     ctx.set('Content-Type', file.mimeType)
-    ctx.set('Content-Disposition', `attachment; filename=${JSON.stringify(file.name)}`)
-    ctx.set('Cache-Control', 'max-age=31536000')
+    ctx.set('Cache-Control', 'max-age=315360000')
+
     ctx.body = new Buffer(file.base64, 'base64')
   }
 }
