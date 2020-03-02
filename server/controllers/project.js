@@ -746,9 +746,9 @@ class projectController extends baseController {
         'extra.logo4project': id,
       })
     }
-    if (color != null) data.color = color
-    if (icon != null) data.icon = icon
-    if (logo != null) data.logo = logo
+    data.color = color
+    data.icon = icon
+    data.logo = logo
     if (!id) {
       return (ctx.body = yapi.commons.resReturn(null, 405, '项目id不能为空'))
     }
