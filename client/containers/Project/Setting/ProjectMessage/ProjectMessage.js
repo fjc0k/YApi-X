@@ -210,8 +210,8 @@ class ProjectMessage extends Component {
 
   // 修改项目头像的图标
   handleChangeProjectIcon = e => {
-    const {_id, color, icon, logo} = this.props.projectMsg
-    this.props.upsetProject({id: _id, color, icon: e.target.value || icon, logo: logo}).then(res => {
+    const {_id, color, icon} = this.props.projectMsg
+    this.props.upsetProject({id: _id, color, icon: e.target.value || icon, logo: null}).then(res => {
       if (res.payload.data.errcode === 0) {
         this.props.getProject(this.props.projectId)
       }
@@ -310,8 +310,8 @@ class ProjectMessage extends Component {
                     logo4project: this.props.projectId,
                   },
                 })
-                const {_id, color, icon} = this.props.projectMsg
-                const res = await this.props.upsetProject({id: _id, color, icon, logo: id})
+                const {_id, color} = this.props.projectMsg
+                const res = await this.props.upsetProject({id: _id, color, icon: null, logo: id})
                 if (res.payload.data.errcode === 0) {
                   this.props.getProject(this.props.projectId)
                 }
