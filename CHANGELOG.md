@@ -1,4 +1,11 @@
 更新日志
+### [2.3.1](https://github.com/fjc0k/yapi-x/compare/v2.3.0...v2.3.1) (2020-03-02)
+
+
+### 修复
+
+* 去除可能导致文件下载产生错误的因素 ([16f5a90](https://github.com/fjc0k/yapi-x/commit/16f5a909e207ed7b4450def97b6951345fe351ac))
+
 ## [2.3.0](https://github.com/fjc0k/yapi-x/compare/v2.2.0...v2.3.0) (2020-03-02)
 
 
