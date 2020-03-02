@@ -10,11 +10,16 @@ const projectController = require('./controllers/project.js')
 const logController = require('./controllers/log.js')
 const followController = require('./controllers/follow.js')
 const openController = require('./controllers/open.js')
+const fileController = require('./controllers/file.js')
 const {createAction} = require('./utils/commons.js')
 
 const router = koaRouter()
 
 const INTERFACE_CONFIG = {
+  file: {
+    prefix: '/file/',
+    controller: fileController,
+  },
   interface: {
     prefix: '/interface/',
     controller: interfaceController,
@@ -54,13 +59,24 @@ const INTERFACE_CONFIG = {
 }
 
 const routerConfig = {
+  file: [
+    {
+      action: 'upload',
+      path: 'upload',
+      method: 'post',
+    },
+    {
+      action: 'download',
+      path: 'download',
+      method: 'get',
+    },
+  ],
   group: [
     {
       action: 'getMyGroup',
       path: 'get_mygroup',
       method: 'get',
     },
-
     {
       action: 'list',
       path: 'list',
