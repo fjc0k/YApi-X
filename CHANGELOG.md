@@ -1,4 +1,11 @@
 更新日志
+### [2.3.4](https://github.com/fjc0k/yapi-x/compare/v2.3.3...v2.3.4) (2020-03-03)
+
+
+### 修复
+
+* **项目图标:** 保证自传项目图标在各种场景下正常显示 (close: [#11](https://github.com/fjc0k/yapi-x/issues/11)) ([a0561cb](https://github.com/fjc0k/yapi-x/commit/a0561cb2333b38c1c42a21f6c7b54cadc43b472f))
+
 ### [2.3.3](https://github.com/fjc0k/yapi-x/compare/v2.3.2...v2.3.3) (2020-03-02)
 
 

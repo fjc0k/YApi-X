@@ -1,6 +1,6 @@
 {
   "name": "yapi-x",
-  "version": "2.3.3",
+  "version": "2.3.4",
   "description": "YApi 改。",
   "main": "server/app.js",
   "scripts": {
