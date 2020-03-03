@@ -51,6 +51,7 @@ class projectController extends baseController {
     const desc = 'string'
     const icon = 'string'
     const color = 'string'
+    const logo = 'number'
     const env = 'array'
 
     const cat = 'array'
@@ -79,6 +80,7 @@ class projectController extends baseController {
         desc,
         color,
         icon,
+        logo,
         project_type,
       },
       addMember: {
