@@ -302,7 +302,7 @@ class ProjectMessage extends Component {
             beforeUpload={file => {
               const fr = new FileReader()
               fr.onload = async () => {
-                const {data: {data: {id}}} = await axios.post('/api/file/upload', {
+                const uploadRes = await axios.post('/api/file/upload', {
                   name: file.name,
                   mimeType: file.type,
                   base64: fr.result.split(';base64,')[1],
@@ -310,10 +310,15 @@ class ProjectMessage extends Component {
                     logo4project: this.props.projectId,
                   },
                 })
+                if (uploadRes.data.errcode !== 0) {
+                  return message.error(uploadRes.data.errmsg)
+                }
                 const {_id, color} = this.props.projectMsg
-                const res = await this.props.upsetProject({id: _id, color, icon: null, logo: id})
+                const res = await this.props.upsetProject({id: _id, color, icon: null, logo: uploadRes.data.data.id})
                 if (res.payload.data.errcode === 0) {
                   this.props.getProject(this.props.projectId)
+                } else {
+                  message.error(res.payload.data.errmsg)
                 }
               }
               fr.readAsDataURL(file)
