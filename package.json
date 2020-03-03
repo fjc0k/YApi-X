@@ -4,7 +4,7 @@
   "description": "YApi 改。",
   "main": "server/app.js",
   "scripts": {
-    "dev": "concurrently -n sever,client \"npm run dev-server\" \"npm run dev-client\"",
+    "dev": "concurrently -n sever,client \"npx kill-port 3000 && npm run dev-server\" \"npm run dev-client\"",
     "start": "node server/app.js",
     "release": "standard-version -a && git push --follow-tags origin master",
     "lint": "eslint **/*.{ts,tsx,js,jsx} --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint --no-error-on-unmatched-pattern --fix",
