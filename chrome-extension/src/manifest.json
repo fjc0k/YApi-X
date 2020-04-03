@@ -1,0 +1,29 @@
+{
+  "name": "YApi-X",
+  "description": "YApi-X 浏览器插件。",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "icons": {
+    "128": "logo.png"
+  },
+  "permissions": [
+		"http://*/*",
+		"https://*/*"
+	],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "content_scripts": [
+		{
+			"matches": [
+        "http://*/*",
+        "https://*/*"
+			],
+			"js": [
+				"runtime.js"
+			]
+		}
+	]
+}

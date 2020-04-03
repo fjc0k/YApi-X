@@ -42,3 +42,4 @@ runtime/
 .tags1
 client/plugin-module.js
 /iconfont
+dist/
