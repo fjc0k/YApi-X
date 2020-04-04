@@ -1,4 +1,13 @@
 更新日志
+## [2.4.0](https://github.com/fjc0k/yapi-x/compare/v2.3.4...v2.4.0) (2020-04-04)
+
+
+### 特性
+
+* 完成 YApi-X 浏览器插件开发 ([be6016c](https://github.com/fjc0k/yapi-x/commit/be6016cdf3217cc32b40bf55cbf417bdd953833a))
+* 完成浏览器插件开发 (close: [#5](https://github.com/fjc0k/yapi-x/issues/5)) ([9a660f3](https://github.com/fjc0k/yapi-x/commit/9a660f3fa436b38801ac8ec435a5bdd2c401d530))
+* 支持自动预览图片、音视频 (close: [#4](https://github.com/fjc0k/yapi-x/issues/4)) ([41f207c](https://github.com/fjc0k/yapi-x/commit/41f207ce21853d011e154c3e3a1a1895f9d4f51d))
+
 ### [2.3.4](https://github.com/fjc0k/yapi-x/compare/v2.3.3...v2.3.4) (2020-03-03)
 
 
