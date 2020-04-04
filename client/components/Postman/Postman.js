@@ -135,7 +135,8 @@ export default class Run extends Component {
       envModalVisible: false,
       test_res_header: null,
       test_res_body: null,
-      autoPreviewHTML: true,
+      test_res_body_dataurl: null,
+      autoPreview: true,
       ...this.props.data
     };
   }
@@ -145,6 +146,36 @@ export default class Run extends Component {
     return hd != null
       && typeof hd === 'object'
       && String(hd['Content-Type'] || hd['content-type']).indexOf('text/html') !== -1
+  }
+
+  get testResponseBodyIsImage() {
+    const hd = this.state.test_res_header
+    const contentType = (
+      hd != null
+        && typeof hd === 'object'
+        && String(hd['Content-Type'] || hd['content-type'])
+    ) || ''
+    return contentType.indexOf('image/') !== -1
+  }
+
+  get testResponseBodyIsVideo() {
+    const hd = this.state.test_res_header
+    const contentType = (
+      hd != null
+        && typeof hd === 'object'
+        && String(hd['Content-Type'] || hd['content-type'])
+    ) || ''
+    return contentType.indexOf('video/') !== -1
+  }
+
+  get testResponseBodyIsAudio() {
+    const hd = this.state.test_res_header
+    const contentType = (
+      hd != null
+        && typeof hd === 'object'
+        && String(hd['Content-Type'] || hd['content-type'])
+    ) || ''
+    return contentType.indexOf('audio/') !== -1
   }
 
   checkInterfaceData(data) {
@@ -362,7 +393,8 @@ export default class Run extends Component {
         body: result.res.body,
         status: result.res.status,
         statusText: result.res.statusText,
-        runTime: result.runTime
+        runTime: result.runTime,
+        getBodyAsDataUrl: result.res.getBodyAsDataUrl,
       };
 
     } catch (data) {
@@ -401,12 +433,15 @@ export default class Run extends Component {
       this.setState({ test_valid_msg: '' });
     }
 
-    this.setState({
-      resStatusCode: result.status,
-      resStatusText: result.statusText,
-      test_res_header: result.header,
-      test_res_body: result.body
-    });
+    result.getBodyAsDataUrl().then(dataUrl => {
+      this.setState({
+        resStatusCode: result.status,
+        resStatusText: result.statusText,
+        test_res_header: result.header,
+        test_res_body: result.body,
+        test_res_body_dataurl: dataUrl,
+      });
+    })
   };
 
   // 返回数据与定义数据的比较判断
@@ -975,16 +1010,31 @@ export default class Run extends Component {
                   <div className="container-title">
                     <h4>Body</h4>
                     <Checkbox
-                      checked={this.state.autoPreviewHTML}
-                      onChange={e => this.setState({ autoPreviewHTML: e.target.checked })}>
-                      <span>自动预览HTML</span>
+                      checked={this.state.autoPreview}
+                      onChange={e => this.setState({ autoPreview: e.target.checked })}>
+                      <span>自动预览HTML、图片、音视频</span>
                     </Checkbox>
                   </div>
                   {
-                    this.state.autoPreviewHTML && this.testResponseBodyIsHTML
+                    this.state.autoPreview && this.testResponseBodyIsHTML
                       ? <iframe
                           className="pretty-editor-body"
                           srcDoc={this.state.test_res_body}
+                        />
+                        : this.state.autoPreview && this.testResponseBodyIsImage
+                          ? <iframe
+                          className="pretty-editor-body"
+                          srcDoc={`<html><body><img style="max-width:100%" src="${this.state.test_res_body_dataurl}" /></body></html>`}
+                        />
+                          : this.state.autoPreview && this.testResponseBodyIsVideo
+                          ? <iframe
+                          className="pretty-editor-body"
+                          srcDoc={`<html><body><video controls style="max-width:100%" src="${this.state.test_res_body_dataurl}" /></body></html>`}
+                        />
+                        : this.state.autoPreview && this.testResponseBodyIsAudio
+                          ? <iframe
+                          className="pretty-editor-body"
+                          srcDoc={`<html><body><audio controls style="max-width:100%" src="${this.state.test_res_body_dataurl}" /></body></html>`}
                         />
                       : <AceEditor
                           readOnly={true}
