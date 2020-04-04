@@ -1,5 +1,8 @@
 import { IBackgroundHttpRequestOptions, IBackgroundHttpResponse, IBackgroundRequest, IBackgroundResponse, IHttpRequestListenerPayload, IHttpResponseListenerPayload } from './types'
+import { injectJs } from './utils'
 import { YAPIX } from './consts'
+
+injectJs('adapter.js')
 
 interface YApiXHTTPRequestOptions {
   url: string,
@@ -55,7 +58,7 @@ async function YApiXHTTPRequest(options: YApiXHTTPRequestOptions) {
         break
       case 'file':
         requestOptions.body = options.requestBody
-        requestOptions.headers!['Content-Type'] = 'multipart/form-data'
+        delete requestOptions.headers!['Content-Type']
         break
       default:
         requestOptions.body = options.requestBody
@@ -87,6 +90,7 @@ async function YApiXHTTPRequest(options: YApiXHTTPRequestOptions) {
   return responseBody
 }
 
+// ==== 基于事件将后台服务与前台应用桥接在一起 ====
 document.addEventListener(YAPIX.HTTP_REQUEST_LISTENER_TYPE, async e => {
   const detail: IHttpRequestListenerPayload = JSON.parse(JSON.stringify((e as any).detail || {}))
   const res = await YApiXHTTPRequest(detail.options)

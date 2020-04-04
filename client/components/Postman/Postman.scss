@@ -164,6 +164,11 @@
     }
     .value {
       flex-grow: 1;
+
+      &.ant-input[type="file"] {
+        line-height: 1em;
+        cursor: pointer;
+      }
     }
     .eq-symbol {
       margin: 0 5px;

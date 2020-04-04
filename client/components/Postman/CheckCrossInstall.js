@@ -1,61 +1,46 @@
-import React from 'react';
-import { Alert } from 'antd';
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
+import React from 'react'
+import { Alert } from 'antd'
 
 exports.initCrossRequest = function (fn) {
-  let startTime = 0;
-  let _crossRequest = setInterval(() => {
-    startTime += 500;
+  let startTime = 0
+  const _crossRequest = setInterval(() => {
+    startTime += 500
     if (startTime > 5000) {
-      clearInterval(_crossRequest);
+      clearInterval(_crossRequest)
     }
     if (window.crossRequest) {
-      clearInterval(_crossRequest);
-      fn(true);
-    } else {
-      fn(false);
+      clearInterval(_crossRequest)
+      fn(true)
     }
-  }, 500);
-  return _crossRequest;
-};
-
+    else {
+      fn(false)
+    }
+  }, 500)
+  return _crossRequest
+}
 CheckCrossInstall.propTypes = {
-  hasPlugin: PropTypes.bool
-};
-
+  hasPlugin: PropTypes.bool,
+}
 function CheckCrossInstall(props) {
-  const hasPlugin = props.hasPlugin;
+  const hasPlugin = props.hasPlugin
   return (
     <div className={hasPlugin ? null : 'has-plugin'}>
       {hasPlugin ? (
         ''
       ) : (
         <Alert
-          message={
+          message={(
             <div>
-              重要：当前的接口测试服务，需安装免费测试增强插件,仅支持 chrome
-              浏览器，选择下面任意一种安装方式：
-              {/* <div>
-                <a
-                  target="blank"
-                  href="https://chrome.google.com/webstore/detail/cross-request/cmnlfmgbjmaciiopcgodlhpiklaghbok?hl=en-US"
-                >
-                  [Google 商店获取（需翻墙]
-                </a>
-              </div> */}
-              <div>
-                <a target="blank" href="https://juejin.im/post/5e3bbd986fb9a07ce152b53d">
-                  {' '}
-                  [谷歌请求插件详细安装教程]{' '}
-                </a>
-              </div>
+              运行接口需安装浏览器插件，<a href='https://github.com/fjc0k/YApi-X/tree/master/chrome-extension#readme'>查看安装教程→</a>
             </div>
-          }
-          type="warning"
+          )}
+          type='error'
+          style={{ margin: 10 }}
         />
       )}
     </div>
-  );
+  )
 }
 
-export default CheckCrossInstall;
+export default CheckCrossInstall

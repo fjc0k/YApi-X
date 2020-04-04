@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="132px" height="132px" viewBox="0 0 132 132" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="128px" height="128px" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
     <title>分组</title>
     <desc>Created with Sketch.</desc>
@@ -10,8 +10,8 @@
         </linearGradient>
     </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="分组" transform="translate(2.000000, 2.000000)">
-            <circle id="oval" stroke-opacity="0.90160779" stroke="#D5D0D0" stroke-width="4" fill="url(#linearGradient-1)" cx="64" cy="64" r="64"></circle>
+        <g id="分组">
+            <circle id="oval" stroke-opacity="0.90160779" stroke="#D5D0D0" stroke-width="4" fill="url(#linearGradient-1)" cx="64" cy="64" r="62"></circle>
             <path d="M59.418789,58.2324458 L59.418789,96.7692267 C59.418789,101.751266 55.3882795,105.787944 50.4168922,105.787944 C45.4455046,105.787944 41.418789,101.336953 41.418789,96.9300478 L41.418789,58.2338894 C41.418789,53.824118 45.4474017,49.3521245 50.418789,49.3745623 C55.3901764,49.3970003 59.418789,53.824118 59.418789,58.2324458 Z" id="orange" fill="#E5C329" transform="translate(50.418789, 77.581211) rotate(45.000000) translate(-50.418789, -77.581211) "></path>
             <path d="M87.0227008,30.6470802 C87.0227008,30.6470802 87.6090907,63.0101757 86.9767235,68.6599051 C86.3443564,74.3096345 83.0476132,77.5486615 78.1445854,77.5486615 C73.2415575,77.5486615 69.2702117,73.1588744 69.2702117,68.8125669 L69.2702117,30.6485041 C69.2702117,26.2993696 73.2434285,21.8888687 78.1464562,21.9109981 C83.0494842,21.9331276 87.0227008,26.2993696 87.0227008,30.6470802 Z" id="green" fill="#57CF27" transform="translate(78.270212, 49.729788) rotate(45.000000) translate(-78.270212, -49.729788) "></path>
             <path d="M86.5808511,58.2324348 L86.5808511,96.7685207 C86.5808511,101.750471 82.5503417,105.787075 77.5789542,105.787075 C72.6075669,105.787075 68.5808511,101.336164 68.5808511,96.929339 L68.5808511,58.2338787 C68.5808511,53.8241866 72.6094637,49.3522738 77.5808512,49.3747114 C82.5522386,49.3971489 86.5808511,53.8241866 86.5808511,58.2324348 Z" id="blue" fill="#2359F1" transform="translate(77.580851, 77.580851) rotate(-45.000000) translate(-77.580851, -77.580851) "></path>

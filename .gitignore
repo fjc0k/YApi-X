@@ -42,4 +42,5 @@ runtime/
 .tags1
 client/plugin-module.js
 /iconfont
-dist/
+/chrome-extension/yapi-x-chrome-extension
+/chrome-extension/archive.zip

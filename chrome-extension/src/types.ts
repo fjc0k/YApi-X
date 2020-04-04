@@ -26,6 +26,9 @@ export interface IBackgroundRequest {
 }
 
 export interface IBackgroundHttpResponse {
+  ok: boolean,
+  status: number,
+  statusText: string,
   headers: Record<string, string>,
   base64File: IBase64File,
 }

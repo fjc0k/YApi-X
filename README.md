@@ -5,7 +5,8 @@
 - 接口路径支持更多字符，可以将 `@`、`#`、`;` 等字符用于接口路径定义；
 - 支持复制分类；
 - 新增 `adminPassword` 配置项以设置管理员密码；
-- 项目图标支持自传图片。
+- 项目图标支持自传图片；
+- 接口运行支持上传文件（[需安装插件→](https://github.com/fjc0k/YApi-X/tree/master/chrome-extension#readme)）。
 
 --------
 

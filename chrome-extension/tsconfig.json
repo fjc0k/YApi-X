@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "strict": true,
-    "target": "ESNext",
+    "target": "ES2019",
     "module": "ESNext",
     "declaration": false,
     "removeComments": false,
@@ -10,10 +10,11 @@
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "newLine": "LF",
+    "baseUrl": ".",
     "sourceMap": false,
     "lib": ["ESNext", "DOM", "DOM.Iterable"]
   },
   "include": [
-    "src"
+    "src/**/*.ts"
   ]
 }

@@ -7,7 +7,10 @@ import { terser } from 'rollup-plugin-terser'
 const entries = [
   'src/background.ts',
   'src/runtime.ts',
+  'src/adapter.ts',
 ]
+
+const dest = 'yapi-x-chrome-extension'
 
 export default args => (
   entries.map(entry => {
@@ -15,21 +18,27 @@ export default args => (
     const config = {
       input: entry,
       output: {
-        dir: 'dist',
-        format: 'iife',
+        dir: dest,
+        format: 'commonjs',
+      },
+      treeshake: {
+        moduleSideEffects: false,
+        unknownGlobalSideEffects: false,
       },
       plugins: [
         resolve({
           extensions: ['.ts', '.js', '.json'],
         }),
         commonjs(),
-        typescript(),
+        typescript({
+          check: false,
+        }),
         !args.watch && terser(),
         copy({
           targets: [
             {
               src: ['src/**/*', '!**/*.ts'],
-              dest: 'dist',
+              dest: dest,
             },
           ],
         }),

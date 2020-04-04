@@ -66,11 +66,11 @@ class Helper {
       })
 
       child.on('error', error => {
-        resolve({error, stdout, stderr, cmd})
+        resolve({ error, stdout, stderr, cmd })
       })
 
       child.on('close', code => {
-        resolve({stdout, stderr, cmd, code})
+        resolve({ stdout, stderr, cmd, code })
       })
     })
   }
@@ -202,7 +202,8 @@ class ConfigParser {
               ? JSON.parse(envValue.trim())
               : (shape as any)(envValue)
         }
-      } else {
+      }
+      else {
         if ((configCtx as any)[key] == null) {
           (configCtx as any)[key] = {}
         }
@@ -223,7 +224,7 @@ class ConfigParser {
     return merge(
       config1,
       config2,
-      {arrayMerge: (_, source) => source},
+      { arrayMerge: (_, source) => source },
     )
   }
 
@@ -267,7 +268,8 @@ class BootstrapServer {
       if (/\/logs$/.test(req.url || '')) {
         res.setHeader('Content-Type', 'application/json; charset=utf-8')
         res.end(JSON.stringify(this.logs))
-      } else {
+      }
+      else {
         res.setHeader('Content-Type', 'text/html; charset=utf-8')
         res.end(`
           <!DOCTYPE html>
