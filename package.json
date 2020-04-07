@@ -62,7 +62,8 @@
   "eslintIgnore": [
     "node_modules",
     "common/json-schema-mockjs.js",
-    "dist"
+    "dist",
+    "/chrome-extension/yapi-x-chrome-extension"
   ],
   "ava": {
     "babel": "inherit",

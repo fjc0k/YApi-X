@@ -19,7 +19,7 @@ export default args => (
       input: entry,
       output: {
         dir: dest,
-        format: 'commonjs',
+        format: 'umd',
       },
       treeshake: {
         moduleSideEffects: false,

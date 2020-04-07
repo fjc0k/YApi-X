@@ -22,7 +22,7 @@
 
 ### 通过 Chrome 官方商店安装
 
-尚在审核。
+[https://chrome.google.com/webstore/detail/yapi-x/ebiododddhjccikhminneafpoppneknc](https://chrome.google.com/webstore/detail/yapi-x/ebiododddhjccikhminneafpoppneknc)
 
 ### 手动安装
 
@@ -34,9 +34,9 @@
 
 #### 加载插件
 
-首先，点击下面的链接打开 Chrome 的扩展程序：
+首先，复制下面的链接在地址栏打开 Chrome 的扩展程序：
 
-[chrome://extensions](chrome://extensions)
+`chrome://extensions`
 
 然后，打开 `开发者模式`：
 
