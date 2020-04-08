@@ -19,7 +19,7 @@ export default args => (
       input: entry,
       output: {
         dir: dest,
-        format: 'umd',
+        format: 'iife',
       },
       treeshake: {
         moduleSideEffects: false,
