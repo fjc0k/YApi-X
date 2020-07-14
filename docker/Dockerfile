@@ -1,5 +1,8 @@
 ######## 构建 ########
-FROM jayfong/front-end-builder:latest as builder
+FROM node:12.16.3-alpine3.11 as builder
+
+RUN apk add --update --no-cache ca-certificates curl wget cmake build-base git bash python make gcc g++ zlib-dev autoconf automake file nasm \
+  && update-ca-certificates
 
 WORKDIR /yapi/vendors
 
@@ -17,7 +20,7 @@ RUN cd .. \
   && rm -rf **/*.{map,lock,log,md,yml}
 
 ######## 镜像 ########
-FROM node:alpine
+FROM node:12.16.3-alpine3.11
 
 WORKDIR /yapi
 
