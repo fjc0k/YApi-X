@@ -1,4 +1,18 @@
 更新日志
+## [2.5.0](https://github.com/fjc0k/yapi-x/compare/v2.4.0...v2.5.0) (2020-07-14)
+
+
+### 特性
+
+* YApi-X 浏览器插件正式发布 ([bb521ed](https://github.com/fjc0k/yapi-x/commit/bb521ed7bd4cf6a19e3b8ecc1b45220746b4ea8e))
+
+
+### 修复
+
+* **Dockerfile:** 锁定依赖版本 ([30e896b](https://github.com/fjc0k/yapi-x/commit/30e896b5ff1a71130e8c831a2eab9f89548a98fe))
+* 在测试集合中克隆测试用例时，如果该用例来自于外部项目，克隆结束后路由跳转到外部项目了 ([#21](https://github.com/fjc0k/yapi-x/issues/21)) ([d76c5ce](https://github.com/fjc0k/yapi-x/commit/d76c5ce10db26bb6bd40890accef7cadb1b9c56a))
+* 生成 iife 格式的浏览器插件 ([fe08743](https://github.com/fjc0k/yapi-x/commit/fe08743e76a857a023c66d953367bc1e7f91e0ca))
+
 ## [2.4.0](https://github.com/fjc0k/yapi-x/compare/v2.3.4...v2.4.0) (2020-04-04)
 
 
