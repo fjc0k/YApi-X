@@ -251,6 +251,10 @@ export default class InterfaceColMenu extends Component {
         message.success('克隆用例成功');
         let colId = res.data.data.col_id;
         let projectId=res.data.data.project_id;
+        let currProjectId = that.props.curProject._id;
+        if (currProjectId !== projectId && currProjectId !== null) {
+          projectId = currProjectId;
+        }
         await this.getList();
         this.props.history.push('/project/' + projectId + '/interface/col/' + colId);
         this.setState({
