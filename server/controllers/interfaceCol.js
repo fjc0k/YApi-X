@@ -339,22 +339,24 @@ class interfaceColController extends baseController {
       params.up_time = yapi.commons.time();
       let result = await this.caseModel.save(params);
       let username = this.getUsername();
+      let caseData = await this.caseModel.get(result._id);
+      let colData = await this.colModel.get(caseData.col_id);
 
       this.colModel.get(params.col_id).then(col => {
+        
         yapi.commons.saveLog({
           content: `<a href="/user/profile/${this.getUid()}">${username}</a> 在接口集 <a href="/project/${
-            params.project_id
+            colData.project_id
           }/interface/col/${params.col_id}">${col.name}</a> 下添加了测试用例 <a href="/project/${
-            params.project_id
+            colData.project_id
           }/interface/case/${result._id}">${params.casename}</a>`,
           type: 'project',
           uid: this.getUid(),
           username: username,
-          typeid: params.project_id
+          typeid: colData.project_id
         });
       });
-      this.projectModel.up(params.project_id, { up_time: new Date().getTime() }).then();
-
+      this.projectModel.up(colData.project_id, { up_time: new Date().getTime() }).then();
       ctx.body = yapi.commons.resReturn(result);
     } catch (e) {
       ctx.body = yapi.commons.resReturn(null, 402, e.message);
