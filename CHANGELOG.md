@@ -1,4 +1,11 @@
 更新日志
+### [2.5.1](https://github.com/fjc0k/yapi-x/compare/v2.5.0...v2.5.1) (2020-07-15)
+
+
+### 修复
+
+* 在测试集合中克隆测试用例时，如果该用例来自于外部项目，日志有误 ([#22](https://github.com/fjc0k/yapi-x/issues/22)) ([5239de6](https://github.com/fjc0k/yapi-x/commit/5239de63c68ed6a91f8f62fd02f8cafe0fd4fc49))
+
 ## [2.5.0](https://github.com/fjc0k/yapi-x/compare/v2.4.0...v2.5.0) (2020-07-14)
 
 
