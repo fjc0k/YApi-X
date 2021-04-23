@@ -22,6 +22,9 @@ interface YApiXHTTPRequestOptions {
 async function YApiXHTTPRequest(options: YApiXHTTPRequestOptions) {
   let url = options.url
 
+  // 支持 bypass 约定
+  url = url.replace(/^https?:\/\/bypass\//, '')
+
   // 请求方法
   const method = options.method.toUpperCase()
   const isGETLikeMethod = ['GET', 'HEAD', 'OPTIONS'].includes(method)
@@ -34,7 +37,7 @@ async function YApiXHTTPRequest(options: YApiXHTTPRequestOptions) {
   }
 
   // 将 query 加入 url
-  const urlInstance = new URL(options.url)
+  const urlInstance = new URL(url)
   for (const [key, value] of Object.entries(options.query || {})) {
     urlInstance.searchParams.append(key, value)
   }
