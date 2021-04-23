@@ -1,4 +1,11 @@
 更新日志
+### [2.5.2](https://github.com/fjc0k/yapi-x/compare/v2.5.1...v2.5.2) (2021-04-23)
+
+
+### 修复
+
+* add useUnifiedTopology to mongo ([4412884](https://github.com/fjc0k/yapi-x/commit/441288404c081dc57c279278efbe58c1e7412f88))
+
 ### [2.5.1](https://github.com/fjc0k/yapi-x/compare/v2.5.0...v2.5.1) (2020-07-15)
 
 
