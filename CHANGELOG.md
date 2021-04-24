@@ -1,4 +1,12 @@
 更新日志
+## [2.6.0](https://github.com/fjc0k/yapi-x/compare/v2.5.2...v2.6.0) (2021-04-24)
+
+
+### 特性
+
+* 请求参数设置下的 Headers 支持批量添加 ([1503020](https://github.com/fjc0k/yapi-x/commit/150302041eb46d414668ed2aef7f150c14c676fd))
+* **浏览器插件:** 支持 bypass 约定 ([6f711b7](https://github.com/fjc0k/yapi-x/commit/6f711b7c0d06c7b3f472085a3099e235b24c074e))
+
 ### [2.5.2](https://github.com/fjc0k/yapi-x/compare/v2.5.1...v2.5.2) (2021-04-23)
 
 
