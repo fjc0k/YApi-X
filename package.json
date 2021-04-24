@@ -15,13 +15,13 @@
   "main": "server/app.js",
   "scripts": {
     "build-client": "cross-env NODE_ENV=production ykit pack -m",
-    "dev": "concurrently -n sever,client \"npx kill-port 3000 && npm run dev-server\" \"npm run dev-client\"",
+    "dev": "npm run dev-prepare && concurrently -n sever,client \"npx kill-port 3000 && npm run dev-server\" \"npm run dev-client\"",
+    "dev-prepare": "echo '{\"port\":3000,\"adminAccount\":\"admin@docker.yapi\",\"adminPassword\":\"admin\",\"db\":{\"servername\":\"localhost\",\"port\":37017,\"DATABASE\":\"yapi\"},\"mail\":{\"enable\":false},\"ldapLogin\":{\"enable\":false},\"closeRegister\":true,\"plugins\":[]}' > ../config.json && docker run --rm -d -p 37017:27017 -v $PWD/.data:/data/db mongo:4.4.5 || true && node --unhandled-rejections strict ./server/install.js || true",
     "dev-client": "npm run dev-copy-icon && ykit s -p 4000",
     "dev-copy-icon": "cpr static/iconfont iconfont -d",
     "dev-server": "nodemon server/app.js dev -L",
     "docs": "ydoc build",
     "install-server": "node server/install.js",
-    "lint": "eslint **/*.{ts,tsx,js,jsx} --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint --no-error-on-unmatched-pattern --fix",
     "release": "standard-version -a && git push --follow-tags origin master",
     "start": "node server/app.js",
     "test": "ava"
@@ -49,22 +49,6 @@
       "react"
     ]
   },
-  "eslintConfig": {
-    "extends": "io",
-    "rules": {
-      "eqeqeq": 0,
-      "new-cap": 0,
-      "react/jsx-filename-extension": 0,
-      "react/sort-comp": 0
-    },
-    "root": true
-  },
-  "eslintIgnore": [
-    "node_modules",
-    "common/json-schema-mockjs.js",
-    "dist",
-    "/chrome-extension/yapi-x-chrome-extension"
-  ],
   "ava": {
     "babel": "inherit",
     "files": [
@@ -159,8 +143,6 @@
     "cross-env": "^7.0.0",
     "css-loader": "^0.28.4",
     "deepmerge": "^4.2.2",
-    "eslint": "^6.8.0",
-    "eslint-config-io": "^0.8.7",
     "extract-text-webpack-plugin": "2.0.0",
     "happypack": "^4.0.1",
     "json-schema-editor-visual": "^1.0.23",
@@ -169,6 +151,7 @@
     "markdown-it-include": "^1.0.0",
     "node-sass": "^4.9.0",
     "nodemon": "^1.11.0",
+    "prettier": "^2.2.1",
     "prop-types": "^15.5.10",
     "rc-queue-anim": "^1.2.0",
     "rc-scroll-anim": "^1.0.7",
