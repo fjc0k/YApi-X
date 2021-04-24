@@ -206,6 +206,7 @@ class InterfaceEditForm extends Component {
         api_opened: false,
         visible: false,
         headerBulkAddVisible: false,
+        headerBulkValue: '',
       },
       curdata,
     )
@@ -618,9 +619,53 @@ class InterfaceEditForm extends Component {
     })
   }
 
-  headerBulkAddClick = () => {
+  handleHeaderBulkAddClick = () => {
+    const headerBulkValue = (this.state.req_headers || [])
+      .map(item => `${item.name}: ${item.value}`)
+      .join('\n')
     this.setState({
       headerBulkAddVisible: true,
+      headerBulkValue: headerBulkValue,
+    })
+  }
+
+  handleHeaderBulkValueInput = e => {
+    this.setState({
+      headerBulkValue: e.target.value,
+    })
+  }
+
+  handleHeaderBulkAddCancel = () => {
+    this.setState({
+      headerBulkAddVisible: false,
+    })
+  }
+
+  handleHeaderBulkAddConfirm = () => {
+    const { headerBulkValue, req_headers } = this.state
+    const headers = headerBulkValue
+      .split(/[\r\n]+/g)
+      .map(line => line.trim())
+      .filter(Boolean)
+      .reduce((res, line) => {
+        const [, key, value] = line.match(/^([^:	]+)\s*[:	]\s*(\S*)$/) || []
+        if (key != null && value != null) {
+          const found = res.find(item => item.name === key)
+          if (found) {
+            found.value = value
+          } else {
+            res.push({
+              name: key,
+              value: value,
+              required: '1',
+            })
+          }
+        }
+        return res
+      }, (req_headers || []).slice())
+    this.setState({
+      headerBulkAddVisible: false,
+      req_headers: headers,
     })
   }
 
@@ -861,8 +906,11 @@ class InterfaceEditForm extends Component {
           onCancel={this.handleHeaderBulkAddCancel}
           okText='导入'>
           <div>
+            <div style={{ marginBottom: 8 }}>
+              每行一个，支持以冒号(:)、制表符(TAB)分割键值:
+            </div>
             <TextArea
-              placeholder='每行一个，支持以冒号(:)、制表符(TAB)分割键值'
+              placeholder='请输入'
               autosize={{ minRows: 6, maxRows: 10 }}
               value={this.state.headerBulkValue}
               onChange={this.handleHeaderBulkValueInput}
@@ -1095,7 +1143,7 @@ class InterfaceEditForm extends Component {
                 <Col span={12}>
                   <div
                     className='bulk-import'
-                    onClick={this.headerBulkAddClick}>
+                    onClick={this.handleHeaderBulkAddClick}>
                     批量添加
                   </div>
                 </Col>
