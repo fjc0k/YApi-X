@@ -7,7 +7,8 @@
 - 新增 `adminPassword` 配置项以设置管理员密码；
 - 项目图标支持自传图片；
 - 接口运行支持上传文件（[需安装插件 →](https://github.com/fjc0k/YApi-X/tree/master/chrome-extension#readme)）；
-- 请求参数设置下的 Headers 支持批量添加。
+- 请求参数设置下的 Headers 支持批量添加；
+- 支持 webdav 扩展的 HTTP 请求方法 PROPFIND, PROPPATCH, MKCOL, COPY, MOVE, LOCK, UNLOCK（[了解更多 →](http://www.webdav.org/specs/rfc2518.html)）。
 
 ---
 
