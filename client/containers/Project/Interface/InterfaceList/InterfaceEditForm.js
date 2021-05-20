@@ -89,7 +89,7 @@ const RadioGroup = Radio.Group
 const dataTpl = {
   req_query: { name: '', required: '1', desc: '', example: '' },
   req_headers: { name: '', required: '1', desc: '', example: '' },
-  req_params: { name: '', desc: '', example: '' },
+  req_params: { name: '', desc: '', example: '', type: 'string' },
   req_body_form: {
     name: '',
     type: 'text',
@@ -475,7 +475,7 @@ class InterfaceEditForm extends Component {
       if (findExist) {
         queue.push(findExist)
       } else {
-        queue.push({ name: name, desc: '' })
+        queue.push({ name: name, desc: '', type: 'string' })
       }
     }
     val = handlePath(val)
@@ -840,10 +840,20 @@ class InterfaceEditForm extends Component {
     const paramsTpl = (data, index) => {
       return (
         <Row key={index} className='interface-edit-item-content'>
-          <Col span='6' className='interface-edit-item-content-col'>
+          <Col span='3' className='interface-edit-item-content-col'>
             {getFieldDecorator('req_params[' + index + '].name', {
               initialValue: data.name,
             })(<Input disabled placeholder='参数名称' />)}
+          </Col>
+          <Col span='3' className='interface-edit-item-content-col'>
+            {getFieldDecorator('req_params[' + index + '].type', {
+              initialValue: data.type,
+            })(
+              <Select>
+                <Option value='string'>string</Option>
+                <Option value='number'>number</Option>
+              </Select>,
+            )}
           </Col>
           <Col span='7' className='interface-edit-item-content-col'>
             {getFieldDecorator('req_params[' + index + '].example', {
