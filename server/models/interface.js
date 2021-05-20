@@ -41,6 +41,11 @@ class interfaceModel extends baseModel {
             enum: ['1', '0'],
             default: '1',
           },
+          type: {
+            type: String,
+            enum: ['string', 'number'],
+            default: 'string',
+          },
         },
       ],
       req_headers: [

@@ -175,6 +175,12 @@ class View extends Component {
         key: 'name',
       },
       {
+        title: '类型',
+        dataIndex: 'type',
+        width: 140,
+        key: 'type',
+      },
+      {
         title: '是否必须',
         width: 100,
         dataIndex: 'required',
@@ -208,6 +214,7 @@ class View extends Component {
           value: item.desc,
           example: item.example,
           required: item.required == 0 ? '否' : '是',
+          type: item.type,
         })
       })
     }

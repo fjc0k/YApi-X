@@ -87,7 +87,7 @@ const InputGroup = Input.Group
 const RadioButton = Radio.Button
 const RadioGroup = Radio.Group
 const dataTpl = {
-  req_query: { name: '', required: '1', desc: '', example: '' },
+  req_query: { name: '', required: '1', desc: '', example: '', type: 'string' },
   req_headers: { name: '', required: '1', desc: '', example: '' },
   req_params: { name: '', desc: '', example: '', type: 'string' },
   req_body_form: {
@@ -174,6 +174,7 @@ class InterfaceEditForm extends Component {
             name: '',
             desc: '',
             required: '1',
+            type: 'string',
           },
         ],
 
@@ -702,6 +703,16 @@ class InterfaceEditForm extends Component {
             })(<Input placeholder='参数名称' />)}
           </Col>
           <Col span='3' className='interface-edit-item-content-col'>
+            {getFieldDecorator('req_query[' + index + '].type', {
+              initialValue: data.type,
+            })(
+              <Select>
+                <Option value='string'>string</Option>
+                <Option value='number'>number</Option>
+              </Select>,
+            )}
+          </Col>
+          <Col span='3' className='interface-edit-item-content-col'>
             {getFieldDecorator('req_query[' + index + '].required', {
               initialValue: data.required,
             })(
@@ -716,7 +727,7 @@ class InterfaceEditForm extends Component {
               initialValue: data.example,
             })(<TextArea autosize={true} placeholder='参数示例' />)}
           </Col>
-          <Col span='9' className='interface-edit-item-content-col'>
+          <Col span='6' className='interface-edit-item-content-col'>
             {getFieldDecorator('req_query[' + index + '].desc', {
               initialValue: data.desc,
             })(<TextArea autosize={true} placeholder='备注' />)}
