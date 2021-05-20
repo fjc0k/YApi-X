@@ -1,4 +1,13 @@
 更新日志
+## [2.7.0](https://github.com/fjc0k/yapi-x/compare/v2.6.0...v2.7.0) (2021-05-20)
+
+
+### 特性
+
+* 支持 webdav 扩展的 HTTP 请求方法 PROPFIND, PROPPATCH, MKCOL, COPY, MOVE, LOCK, UNLOCK ([53a8cb1](https://github.com/fjc0k/yapi-x/commit/53a8cb18a22e58daa6f2e658451d46a33344f764))
+* 支持为查询参数添加类型 ([f2aafbc](https://github.com/fjc0k/yapi-x/commit/f2aafbcc4b1e305705e63a2f3b69d4203a0de632))
+* 支持为路径参数添加类型 ([88fc9fb](https://github.com/fjc0k/yapi-x/commit/88fc9fbfc519544924f872b6878caca47009a173))
+
 ## [2.6.0](https://github.com/fjc0k/yapi-x/compare/v2.5.2...v2.6.0) (2021-04-24)
 
 
