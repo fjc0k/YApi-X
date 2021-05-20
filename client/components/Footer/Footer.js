@@ -1,22 +1,22 @@
-import './Footer.scss';
-import React, { PureComponent as Component } from 'react';
-import PropTypes from 'prop-types';
-import { Row, Col } from 'antd';
-import { Icon } from 'antd';
+import './Footer.scss'
+import React, { PureComponent as Component } from 'react'
+import PropTypes from 'prop-types'
+import { Row, Col } from 'antd'
+import { Icon } from 'antd'
 
-const version = process.env.version;
+const version = process.env.version
 class Footer extends Component {
   constructor(props) {
-    super(props);
+    super(props)
   }
   static propTypes = {
-    footList: PropTypes.array
-  };
+    footList: PropTypes.array,
+  }
   render() {
     return (
-      <div className="footer-wrapper">
-        <Row className="footer-container">
-          {this.props.footList.map(function(item, i) {
+      <div className='footer-wrapper'>
+        <Row className='footer-container'>
+          {this.props.footList.map(function (item, i) {
             return (
               <FootItem
                 key={i}
@@ -24,41 +24,45 @@ class Footer extends Component {
                 title={item.title}
                 iconType={item.iconType}
               />
-            );
+            )
           })}
         </Row>
       </div>
-    );
+    )
   }
 }
 
 class FootItem extends Component {
   constructor(props) {
-    super(props);
+    super(props)
   }
   static propTypes = {
     linkList: PropTypes.array,
     title: PropTypes.string,
-    iconType: PropTypes.string
-  };
+    iconType: PropTypes.string,
+  }
   render() {
     return (
       <Col span={6}>
-        <h4 className="title">
-          {this.props.iconType ? <Icon type={this.props.iconType} className="icon" /> : ''}
+        <h4 className='title'>
+          {this.props.iconType ? (
+            <Icon type={this.props.iconType} className='icon' />
+          ) : (
+            ''
+          )}
           {this.props.title}
         </h4>
-        {this.props.linkList.map(function(item, i) {
+        {this.props.linkList.map(function (item, i) {
           return (
             <p key={i}>
-              <a href={item.itemLink} className="link">
+              <a href={item.itemLink} className='link'>
                 {item.itemTitle}
               </a>
             </p>
-          );
+          )
         })}
       </Col>
-    );
+    )
   }
 }
 
@@ -69,10 +73,18 @@ Footer.defaultProps = {
       iconType: 'github',
       linkList: [
         {
-          itemTitle: 'YApi 源码仓库',
-          itemLink: 'https://github.com/YMFE/yapi'
-        }
-      ]
+          itemTitle: 'YApi',
+          itemLink: 'https://github.com/YMFE/yapi',
+        },
+        {
+          itemTitle: 'YApi-X',
+          itemLink: 'https://github.com/fjc0k/YApi-X',
+        },
+        {
+          itemTitle: 'YApi to TypeScript',
+          itemLink: 'https://github.com/fjc0k/yapi-to-typescript',
+        },
+      ],
     },
     {
       title: '团队',
@@ -80,9 +92,13 @@ Footer.defaultProps = {
       linkList: [
         {
           itemTitle: 'YMFE',
-          itemLink: 'https://ymfe.org'
-        }
-      ]
+          itemLink: 'https://ymfe.org',
+        },
+        {
+          itemTitle: 'Jay Fong',
+          itemLink: 'https://github.com/fjc0k',
+        },
+      ],
     },
     {
       title: '反馈',
@@ -90,28 +106,28 @@ Footer.defaultProps = {
       linkList: [
         {
           itemTitle: 'Github Issues',
-          itemLink: 'https://github.com/YMFE/yapi/issues'
+          itemLink: 'https://github.com/fjc0k/YApi-X/issues',
         },
         {
           itemTitle: 'Github Pull Requests',
-          itemLink: 'https://github.com/YMFE/yapi/pulls'
-        }
-      ]
+          itemLink: 'https://github.com/fjc0k/YApi-X/pulls',
+        },
+      ],
     },
     {
-      title: 'Copyright © 2018 YMFE',
+      title: 'Copyright © 2018 YMFE, Jay Fong',
       linkList: [
         {
           itemTitle: `版本: ${version} `,
-          itemLink: 'https://github.com/YMFE/yapi/blob/master/CHANGELOG.md'
+          itemLink: 'https://github.com/fjc0k/YApi-X/blob/master/CHANGELOG.md',
         },
         {
           itemTitle: '使用文档',
-          itemLink: 'https://hellosean1025.github.io/yapi/'
-        }
-      ]
-    }
-  ]
-};
+          itemLink: 'https://hellosean1025.github.io/yapi/',
+        },
+      ],
+    },
+  ],
+}
 
-export default Footer;
+export default Footer
